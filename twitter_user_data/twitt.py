@@ -77,9 +77,9 @@ class TwitterListener(StreamListener):
  
 if __name__ == '__main__':
  
-    hash_tag_list = ["uisek", "sek"]
+    hash_tag_list = ["covid-19", "coronavirus", "pandemia"]
     fetched_tweets_filename = "tweets.json"
 
-    twitter_client = TwitterClient('UISEK')
+    twitter_client = TwitterClient('Salud_Ec')
     data = twitter_client.get_user_timeline_tweets(1)
     print(data)

@@ -125,7 +125,7 @@ if __name__ == '__main__':
 
     api = twitter_client.get_twitter_client_api()
 
-    tweets = api.user_timeline(screen_name="UISEK", count=200)
+    tweets = api.user_timeline(screen_name="Salud_Ec", count=200)
 
     df = tweet_analyzer.tweets_to_data_frame(tweets)
     df['sentiment'] = np.array([tweet_analyzer.analyze_sentiment(tweet) for tweet in df['tweets']])

@@ -11,7 +11,7 @@ class TwitterStreamer():
 
     def stream_tweets(self, fetched_tweets_filename, hash_tag_list):
         # AUTENTICACIÓN CON EL API DE TWITTER
-        listener = TwitterStreamer(fetched_tweets_filename)
+        listener = StdOutListener(fetched_tweets_filename)
         auth = OAuthHandler(twitter_credentials.API_KEY, twitter_credentials.API_SECRET_KEY)
         auth.set_access_token(twitter_credentials.ACCESS_TOKEN, twitter_credentials.ACCESS_TOKEN_SECRET)
         stream = Stream(auth, listener)
@@ -19,7 +19,7 @@ class TwitterStreamer():
         # BUSCAR TWITERS POR PALABRAS CLAVE 
         stream.filter(track=hash_tag_list)
 
-class TwitterStreamer(StreamListener):
+class StdOutListener(StreamListener):
     # Escucha los cambios en Twitter y actualiza continuamente la salida
     def __init__(self, fetched_tweets_filename):
         self.fetched_tweets_filename = fetched_tweets_filename
@@ -40,7 +40,7 @@ class TwitterStreamer(StreamListener):
 
  
 if __name__ == '__main__':
-    hash_tag_list = ["uisek", "sek", "UISEK", "SEK"]
+    hash_tag_list = ["covid-19", "coronavirus", "pandemia"]
     fetched_tweets_filename = "tweets.json"
 
     twitter_streamer = TwitterStreamer()
